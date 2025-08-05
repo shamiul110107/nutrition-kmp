@@ -1,18 +1,85 @@
+# IntelliJ IDEA
 *.iml
-.kotlin
-.gradle
+.idea/
+*.ipr
+*.iws
+*.bkp
+
+# Gradle
+.gradle/
 **/build/
-xcuserdata
-!src/**/build/
-local.properties
-.idea
-.DS_Store
-captures
-.externalNativeBuild
-.cxx
+gradle/scripts
+
+# Kotlin DSL build scripts
+buildSrc/build/
+buildSrc/.gradle/
+buildSrc/.idea/
+buildSrc/gradle/wrapper/
+
+# Android specific
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+*.war
+*.ear
+captures/
+output.json
+
+# Xcode
+xcuserdata/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+*.xcscmblueprint
+*.xccheckout
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Local configuration file
+local.properties
+
+# Others
+*.log
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.tmp
+*.temp
+
+iosApp/Pods
+.kotlin/
+
+# Make sure the `copy` is not checked in.
+composeApp/src/google-services.json
