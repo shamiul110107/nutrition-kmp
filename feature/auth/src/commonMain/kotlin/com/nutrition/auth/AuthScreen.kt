@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.nutrition.shared.Alpha
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.FontSize
+import com.nutrition.shared.Surface
 import com.nutrition.shared.TextPrimary
 import com.nutrition.shared.TextSecondary
 import rememberMessageBarState
@@ -26,6 +28,7 @@ fun AuthScreen() {
 
     Scaffold { paddingValues ->
         ContentWithMessageBar(
+            contentBackgroundColor = Surface,
             modifier = Modifier
                 .padding(
                     top = paddingValues.calculateTopPadding(),
@@ -34,7 +37,10 @@ fun AuthScreen() {
             messageBarState = messageBarState,
             errorMaxLines = 2
         ) {
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(all = 24.dp)
+            ) {
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Center,

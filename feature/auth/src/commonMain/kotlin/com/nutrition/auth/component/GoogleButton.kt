@@ -8,7 +8,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,17 +28,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.layout.RemeasurementModifier
 import androidx.compose.ui.unit.dp
 import com.nutrition.shared.FontSize
-import com.nutrition.shared.Gray
-import com.nutrition.shared.GrayDarker
 import com.nutrition.shared.IconSecondary
 import com.nutrition.shared.Resources
+import com.nutrition.shared.SurfaceDarker
+import com.nutrition.shared.SurfaceLighter
 import com.nutrition.shared.TextPrimary
-import kotlinx.serialization.builtins.ArraySerializer
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.Resource
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -50,8 +46,8 @@ fun GoogleButton(
     secondaryText: String = "Please wait...",
     icon: DrawableResource = Resources.Image.GoogleLogo,
     shape: Shape = RoundedCornerShape(size = 99.dp),
-    backgroundColor: Color = Gray,
-    borderColor: Color = GrayDarker,
+    backgroundColor: Color = SurfaceLighter,
+    borderColor: Color = SurfaceDarker,
     progressIndicatorColor: Color = IconSecondary,
     onClick: () -> Unit
 ) {
@@ -83,7 +79,8 @@ fun GoogleButton(
             AnimatedVisibility(visible = !loading) {
                 Icon(
                     painter = painterResource(icon),
-                    contentDescription = "Google Logo"
+                    contentDescription = "Google Logo",
+                    tint = Color.Unspecified
                 )
             }
             AnimatedVisibility(visible = loading) {
