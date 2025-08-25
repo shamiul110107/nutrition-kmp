@@ -1,5 +1,6 @@
 package com.nutrition.auth.component
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
@@ -76,20 +77,24 @@ fun GoogleButton(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            AnimatedVisibility(visible = !loading) {
-                Icon(
-                    painter = painterResource(icon),
-                    contentDescription = "Google Logo",
-                    tint = Color.Unspecified
-                )
+            AnimatedContent(
+                targetState = loading
+            ) { loadingState ->
+                if (!loadingState)  {
+                    Icon(
+                        painter = painterResource(icon),
+                        contentDescription = "Google Logo",
+                        tint = Color.Unspecified
+                    )
+                } else {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        strokeWidth = 2.dp,
+                        color = progressIndicatorColor
+                    )
+                }
             }
-            AnimatedVisibility(visible = loading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(24.dp),
-                    strokeWidth = 2.dp,
-                    color = progressIndicatorColor
-                )
-            }
+
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = buttonText,

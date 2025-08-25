@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "487771672409",
+    "project_id": "nutrition-kmp",
+    "storage_bucket": "nutrition-kmp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487771672409:android:3e205086ab272a90fb0648",
+        "android_client_info": {
+          "package_name": "com.sami.nutrition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487771672409-8hgrff6jlhc4v2314u8hht28414fi5lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sami.nutrition",
+            "certificate_hash": "ab4d90955b4d86fb41668dad17ed218a4e8aa788"
+          }
+        },
+        {
+          "client_id": "487771672409-gcv0dcegtmegk5sj6j00b112j3s4gb1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClLiz4tgF-a2QDXeFzR7cJfMj0Oum25Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487771672409-gcv0dcegtmegk5sj6j00b112j3s4gb1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
