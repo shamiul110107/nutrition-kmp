@@ -24,8 +24,11 @@ import com.nutrition.shared.Alpha
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.FontSize
 import com.nutrition.shared.Surface
+import com.nutrition.shared.SurfaceBrand
+import com.nutrition.shared.SurfaceError
 import com.nutrition.shared.TextPrimary
 import com.nutrition.shared.TextSecondary
+import com.nutrition.shared.TextWhite
 import rememberMessageBarState
 
 @Composable
@@ -42,7 +45,11 @@ fun AuthScreen() {
                     bottom = paddingValues.calculateBottomPadding()
                 ),
             messageBarState = messageBarState,
-            errorMaxLines = 2
+            errorMaxLines = 2,
+            errorContainerColor = SurfaceError,
+            errorContentColor = TextWhite,
+            successContainerColor = SurfaceBrand,
+            successContentColor = TextPrimary,
         ) {
             Column(modifier = Modifier
                 .fillMaxSize()

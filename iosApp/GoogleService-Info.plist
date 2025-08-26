@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>487771672409-gmm372kbi8tkq70a2l14k8l3frg62ngl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.487771672409-gmm372kbi8tkq70a2l14k8l3frg62ngl</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>487771672409-8hgrff6jlhc4v2314u8hht28414fi5lk.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXXdcCyJxXhRdaRsXvZgNZZ1qX3YK3riw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>487771672409</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>om.sami.nutrition.nutritionSport-kmp</string>
+	<key>PROJECT_ID</key>
+	<string>nutrition-kmp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nutrition-kmp.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:487771672409:ios:edcba1cf4feade54fb0648</string>
+</dict>
+</plist>

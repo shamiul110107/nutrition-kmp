@@ -10,10 +10,15 @@ val GrayDarker = Color(0xFFEBEBEB)
 val Yellowish = Color(0xFFFF00)
 val Orange = Color(0xFFF24C00)
 val White = Color(0xFFFFFFFF)
+val Red = Color(0xFFDD0000)
 
 val Surface = White
 val SurfaceLighter = GrayLighter
 val SurfaceDarker = Gray
+val SurfaceBrand = Yellowish
+val SurfaceError = Gray
+
+
 
 val TextPrimary = Black
 val TextSecondary = Orange
