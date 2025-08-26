@@ -79,7 +79,8 @@ fun AuthScreen() {
                         color = TextPrimary
                     )
                 }
-                GoogleButtonUiContainerFirebase(linkAccount = false,
+                GoogleButtonUiContainerFirebase(
+                    linkAccount = false,
                    onResult = { result ->
                        result.onSuccess { user ->
                            messageBarState.addSuccess("Authentication successful")

@@ -33,7 +33,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("androidx.core:core-splashscreen:1.0.0")
+            implementation(libs.splash.screen)
+            implementation(libs.koin.android)
+            implementation(libs.firebase.app)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -45,9 +47,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.auth.kmp)
-            implementation(libs.firebase.app)
             implementation(project(path = ":navigation"))
             implementation(project(path = ":shared"))
+            implementation(project(path = ":di"))
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
