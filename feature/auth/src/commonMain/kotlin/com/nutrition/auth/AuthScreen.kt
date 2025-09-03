@@ -19,7 +19,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
-import com.mmk.kmpauth.google.GoogleButtonUiContainer
+import com.nutrition.auth.AuthViewModel
 import com.nutrition.shared.Alpha
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.FontSize
@@ -29,10 +29,12 @@ import com.nutrition.shared.SurfaceError
 import com.nutrition.shared.TextPrimary
 import com.nutrition.shared.TextSecondary
 import com.nutrition.shared.TextWhite
+import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
 @Composable
 fun AuthScreen() {
+    val viewModel = koinViewModel<AuthViewModel>()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 
@@ -83,7 +85,15 @@ fun AuthScreen() {
                     linkAccount = false,
                    onResult = { result ->
                        result.onSuccess { user ->
-                           messageBarState.addSuccess("Authentication successful")
+                           viewModel.createCustomer(
+                               user = user,
+                               onSuccess = {
+                                   messageBarState.addSuccess("Authentication successful")
+                               },
+                               onError = { message ->
+                                   messageBarState.addError(message)
+                               }
+                           )
                            loadingState = false
                        }.onFailure { error ->
                            if (error.message?.contains("A network error") == true)  {

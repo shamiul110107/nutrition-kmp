@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183D84522E68867600631CBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 183D84512E68867600631CBC /* GoogleService-Info.plist */; };
 		187E2EBA2E5CBEEF000A3035 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2EB92E5CBEEF000A3035 /* GoogleSignIn */; };
 		187E2EBC2E5CBEEF000A3035 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2EBB2E5CBEEF000A3035 /* GoogleSignInSwift */; };
 		187E2EBF2E5CC323000A3035 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2EBE2E5CC323000A3035 /* FirebaseAnalytics */; };
@@ -19,11 +20,10 @@
 		187E2ECD2E5CC323000A3035 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2ECC2E5CC323000A3035 /* FirebaseInAppMessaging-Beta */; };
 		187E2ECF2E5CC323000A3035 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2ECE2E5CC323000A3035 /* FirebaseMessaging */; };
 		187E2ED12E5CC323000A3035 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 187E2ED02E5CC323000A3035 /* FirebaseStorage */; };
-		187E2EEF2E5D62C2000A3035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187E2EEE2E5D62C2000A3035 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		187E2EEE2E5D62C2000A3035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		183D84512E68867600631CBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA97B12DC1472C00A4DA20 /* nutritionSport-kmp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nutritionSport-kmp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,7 +79,7 @@
 		B9DA97A82DC1472C00A4DA20 = {
 			isa = PBXGroup;
 			children = (
-				187E2EEE2E5D62C2000A3035 /* GoogleService-Info.plist */,
+				183D84512E68867600631CBC /* GoogleService-Info.plist */,
 				B9DA98002DC14AA900A4DA20 /* Configuration */,
 				B9DA97B32DC1472C00A4DA20 /* iosApp */,
 				B9DA97B22DC1472C00A4DA20 /* Products */,
@@ -175,7 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				187E2EEF2E5D62C2000A3035 /* GoogleService-Info.plist in Resources */,
+				183D84522E68867600631CBC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
