@@ -22,7 +22,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "auth"
+            baseName = "home"
             isStatic = true
         }
     }
@@ -35,16 +35,15 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.messagebar.kmp)
-
-             implementation(libs.auth.kmp)
-             implementation(libs.auth.firebase.kmp)
 
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            implementation(libs.compose.navigation)
 
             implementation(project(path = ":shared"))
             implementation(project(path = ":data"))
+        }
+        androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
@@ -55,7 +54,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.sami.auth"
+    namespace = "com.sami.home"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -67,4 +66,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
-

@@ -28,11 +28,10 @@ dependencyResolutionManagement {
     }
 }
 include(":data")
-include(":data")
 include(":di")
 include(":feature:auth")
+include(":feature:home")
 
-include(":feature:auth")
 include(":navigation")
 include(":composeApp")
 include(":shared")

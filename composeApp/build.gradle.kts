@@ -45,15 +45,16 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.auth.kmp)
+            implementation(libs.androidx.lifecycle.viewmodelCompose)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.koin.compose)
+
             implementation(project(path = ":navigation"))
             implementation(project(path = ":shared"))
             implementation(project(path = ":di"))
+            implementation(project(path = ":data"))
+        }
 
-        }
-        androidMain.dependencies {
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

@@ -38,13 +38,23 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.serialization)
-            api(libs.navigation.compose)
+            implementation(libs.compose.navigation)
 
-            implementation(project(path = ":feature:auth"))
-        }
-        androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(project(path = ":feature:auth"))
+            implementation(project(path = ":feature:home"))
+            implementation(project(path = ":shared"))
+        }
+
+        androidMain.dependencies {
+            implementation(libs.koin.android)
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.splash.screen)
         }
     }
 }
@@ -61,4 +71,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+dependencies {
+    implementation(project(":feature:home"))
 }
