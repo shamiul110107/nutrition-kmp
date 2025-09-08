@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -18,18 +17,17 @@ kotlin {
     }
 
     listOf(
-       // iosX64(),
+        //iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "di"
+            baseName = "profile"
             isStatic = true
         }
     }
 
     sourceSets {
-
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -37,20 +35,15 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.messagebar.kmp)
+            implementation(compose.preview)
 
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-
-            implementation(project(":feature:auth"))
-            implementation(project(":feature:home"))
-            implementation(project(":data"))
-        }
-        androidMain.dependencies {
+            implementation(libs.auth.kmp)
+            implementation(libs.auth.firebase.kmp)
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.koin.androidx.compose)
-            implementation(libs.androidx.lifecycle.viewmodel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -59,7 +52,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.sami.di"
+    namespace = "com.sami.profile"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -71,3 +64,4 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+

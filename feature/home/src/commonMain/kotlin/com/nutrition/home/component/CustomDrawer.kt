@@ -22,7 +22,7 @@ import com.nutrition.shared.domain.Customer
 
 @Composable
 fun CustomDrawer(
-    customer: RequestState<Customer>,
+    customer: RequestState<Customer>?,
     onProfileClick: () -> Unit,
     onContactUsClick: () -> Unit,
     onSignOutClick: () -> Unit,
