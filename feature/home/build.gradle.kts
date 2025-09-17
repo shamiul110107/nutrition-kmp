@@ -34,7 +34,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
 
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
@@ -45,6 +44,7 @@ kotlin {
             implementation(project(path = ":data"))
         }
         androidMain.dependencies {
+            implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }

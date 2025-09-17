@@ -11,11 +11,9 @@ import com.nutrition.shared.navigation.Screen
 import com.nutrisport.navigation.SetupNavGraph
 import com.nutrition.data.domain.CustomerRepository
 import com.nutrition.shared.Constants.WEB_CLIENT_ID
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
 
 @Composable
-@Preview
 fun App() {
     MaterialTheme {
         val customerRepository = koinInject<CustomerRepository>()

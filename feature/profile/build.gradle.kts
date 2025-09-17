@@ -28,25 +28,26 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(compose.components.uiToolingPreview)
+            implementation(compose.preview)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
             implementation(libs.messagebar.kmp)
-            implementation(compose.preview)
 
             implementation(libs.auth.kmp)
             implementation(libs.auth.firebase.kmp)
-            implementation(project(path = ":shared"))
-            implementation(project(path = ":data"))
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
         }
     }
 }
@@ -64,4 +65,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
-

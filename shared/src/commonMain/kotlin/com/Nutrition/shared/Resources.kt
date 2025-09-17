@@ -10,6 +10,9 @@ import nutritionsport_kmp.shared.generated.resources.close
 import nutritionsport_kmp.shared.generated.resources.delete
 import nutritionsport_kmp.shared.generated.resources.dollar
 import nutritionsport_kmp.shared.generated.resources.edit_3
+import nutritionsport_kmp.shared.generated.resources.flag_india
+import nutritionsport_kmp.shared.generated.resources.flag_serbia
+import nutritionsport_kmp.shared.generated.resources.flag_usa
 import nutritionsport_kmp.shared.generated.resources.google_logo
 import nutritionsport_kmp.shared.generated.resources.grid
 import nutritionsport_kmp.shared.generated.resources.home
@@ -26,6 +29,7 @@ import nutritionsport_kmp.shared.generated.resources.shopping_cart
 import nutritionsport_kmp.shared.generated.resources.unlock
 import nutritionsport_kmp.shared.generated.resources.user
 import nutritionsport_kmp.shared.generated.resources.vertical_menu
+
 
 object Resources {
     object Icon {
@@ -58,5 +62,11 @@ object Resources {
         val Cat = Res.drawable.cat
         val GoogleLogo = Res.drawable.google_logo
         val PaypalLogo = Res.drawable.paypal_logo
+    }
+
+    object Flag {
+        val India = Res.drawable.flag_india
+        val Usa = Res.drawable.flag_usa
+        val Serbia = Res.drawable.flag_serbia
     }
 }

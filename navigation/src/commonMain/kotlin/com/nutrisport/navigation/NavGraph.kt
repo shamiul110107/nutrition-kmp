@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nutrition.auth.component.AuthScreen
 import com.nutrition.home.HomeGraphScreen
+import com.nutrition.profile.ProfileScreen
 import com.nutrition.shared.navigation.Screen
 
 @Composable
@@ -26,6 +27,16 @@ fun SetupNavGraph(
                     navController.navigate(Screen.Auth) {
                         popUpTo<Screen.HomeGraph> { inclusive = true }
                     }
+                },
+                navigateToProfile = {
+                    navController.navigate(Screen.Profile)
+                }
+            )
+        }
+        composable<Screen.Profile> {
+            ProfileScreen(
+                navigateBack = {
+                    navController.navigateUp()
                 }
             )
         }

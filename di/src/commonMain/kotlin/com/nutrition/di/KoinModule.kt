@@ -4,6 +4,7 @@ import com.nutrition.auth.AuthViewModel
 import com.nutrition.data.CustomerRepositoryImp
 import com.nutrition.data.domain.CustomerRepository
 import com.nutrition.home.HomeGraphViewModel
+import com.nutrition.profile.viewModel.ProfileViewModel
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.dsl.viewModelOf
@@ -13,6 +14,7 @@ val sharedModule = module {
     single<CustomerRepository> { CustomerRepositoryImp() }
     viewModelOf(::AuthViewModel)
     viewModelOf(::HomeGraphViewModel)
+    viewModelOf(::ProfileViewModel)
 }
 fun initializeKoin(
     config: (KoinApplication.() -> Unit)? = null

@@ -32,6 +32,7 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.splash.screen)
             implementation(libs.koin.android)
@@ -43,7 +44,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
             implementation(libs.auth.kmp)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)

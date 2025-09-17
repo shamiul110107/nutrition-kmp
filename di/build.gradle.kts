@@ -36,7 +36,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
@@ -44,9 +43,11 @@ kotlin {
 
             implementation(project(":feature:auth"))
             implementation(project(":feature:home"))
+            implementation(project(":feature:profile"))
             implementation(project(":data"))
         }
         androidMain.dependencies {
+            implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.koin.androidx.compose)

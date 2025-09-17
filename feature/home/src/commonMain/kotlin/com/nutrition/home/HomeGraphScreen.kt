@@ -58,7 +58,6 @@ import com.nutrition.shared.TextWhite
 import com.nutrition.shared.navigation.Screen
 import com.nutrition.shared.util.getScreenWidth
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
@@ -66,6 +65,7 @@ import rememberMessageBarState
 @Composable
 fun HomeGraphScreen(
     navigateToAuth: () -> Unit,
+    navigateToProfile: () -> Unit
 ) {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
@@ -109,7 +109,7 @@ fun HomeGraphScreen(
             .systemBarsPadding()
     ) {
         CustomDrawer(
-            onProfileClick = {},
+            onProfileClick = navigateToProfile,
             onContactUsClick = {},
             onSignOutClick = {
                 viewModel.signOut(
