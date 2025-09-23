@@ -65,8 +65,12 @@ import rememberMessageBarState
 @Composable
 fun HomeGraphScreen(
     navigateToAuth: () -> Unit,
-    navigateToProfile: () -> Unit
-) {
+    navigateToProfile: () -> Unit,
+    navigateToAdminPanel: () -> Unit,
+    navigateToDetails: (String) -> Unit,
+    navigateToCategorySearch: (String) -> Unit,
+    navigateToCheckout: (String) -> Unit,
+    ) {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
     val selectedDestination by remember {
@@ -117,7 +121,7 @@ fun HomeGraphScreen(
                     onError = { message -> messageBarState.addError(message) }
                 )
             },
-            onAdminPanelClick = {},
+            onAdminPanelClick = navigateToAdminPanel,
             customer = null
         )
         Box(

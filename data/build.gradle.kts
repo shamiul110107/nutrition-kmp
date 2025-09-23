@@ -37,9 +37,10 @@ kotlin {
 
             implementation(libs.firebase.firestore)
             implementation(libs.auth.firebase.kmp)
+            implementation(libs.firebase.storage)
             implementation(project(":shared"))
-
         }
+
         androidMain.dependencies {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)

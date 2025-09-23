@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -34,8 +35,9 @@ import com.nutrition.shared.Resources
 import com.nutrition.shared.Surface
 import com.nutrition.shared.TextPrimary
 import com.nutrition.shared.TextSecondary
+import com.nutrition.shared.domain.ProductCategory
 import org.jetbrains.compose.resources.painterResource
-/*
+
 @Composable
 fun CategoriesDialog(
     category: ProductCategory,
@@ -131,4 +133,3 @@ fun CategoriesDialog(
         }
     )
 }
-*/

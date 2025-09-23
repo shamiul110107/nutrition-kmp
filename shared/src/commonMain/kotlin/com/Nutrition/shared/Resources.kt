@@ -29,6 +29,7 @@ import nutritionsport_kmp.shared.generated.resources.shopping_cart
 import nutritionsport_kmp.shared.generated.resources.unlock
 import nutritionsport_kmp.shared.generated.resources.user
 import nutritionsport_kmp.shared.generated.resources.vertical_menu
+import nutritionsport_kmp.shared.generated.resources.weight
 
 
 object Resources {
@@ -54,6 +55,8 @@ object Resources {
         val Book = Res.drawable.book
         val VerticalMenu = Res.drawable.vertical_menu
         val Delete = Res.drawable.delete
+        val Weight = Res.drawable.weight
+
     }
 
     object Image {
