@@ -1,12 +1,11 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -18,18 +17,23 @@ kotlin {
     }
 
     listOf(
-       // iosX64(),
+        //iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "di"
+            baseName = "checkout"
             isStatic = true
         }
     }
 
     sourceSets {
-
+        androidMain.dependencies {
+            implementation(libs.ktor.android.client)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin.client)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -37,39 +41,38 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
 
-            implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            implementation(libs.compose.navigation)
+            implementation(libs.messagebar.kmp)
 
-            implementation(project(":feature:auth"))
-            implementation(project(":feature:details"))
-            implementation(project(":feature:home"))
-            implementation(project(":feature:profile"))
-            implementation(project(":feature:admin_panel"))
-            implementation(project(":feature:admin_panel:manage_product"))
-            implementation(project(":feature:home:products_overview"))
-            implementation(project(":feature:home:categories"))
-            implementation(project(":feature:home:cart"))
-            implementation(project(":feature:home:cart:checkout"))
-            implementation(project(":feature:payment_completed"))
-            implementation(project(":data"))
-            implementation(project(":shared"))
+            implementation(libs.coil3)
+            implementation(libs.coil3.compose)
+            implementation(libs.coil3.compose.core)
+            implementation(libs.coil3.network.ktor)
+            implementation(libs.browser.kmp)
+
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.serialization)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization)
+
+            implementation(libs.firebase.firestore)
+            implementation(libs.auth.firebase.kmp)
+            implementation(libs.firebase.storage)
+
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
         }
-        androidMain.dependencies {
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.koin.androidx.compose)
-            implementation(libs.androidx.lifecycle.viewmodel)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin.client)
         }
     }
 }
 
 android {
-    namespace = "com.sami.di"
+    namespace = "com.sami.checkout"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

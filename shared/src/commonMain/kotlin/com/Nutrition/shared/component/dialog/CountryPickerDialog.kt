@@ -1,4 +1,4 @@
-package com.nutrisport.shared.component.dialog
+package com.nutrition.shared.component.dialog
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState

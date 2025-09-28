@@ -1,7 +1,5 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -18,58 +16,40 @@ kotlin {
     }
 
     listOf(
-       // iosX64(),
+        //iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "di"
+            baseName = "categories"
             isStatic = true
         }
     }
 
     sourceSets {
-
+        androidMain.dependencies {
+            implementation(compose.components.uiToolingPreview)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-
-            implementation(libs.koin.core)
+            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-
-            implementation(project(":feature:auth"))
-            implementation(project(":feature:details"))
-            implementation(project(":feature:home"))
-            implementation(project(":feature:profile"))
-            implementation(project(":feature:admin_panel"))
-            implementation(project(":feature:admin_panel:manage_product"))
-            implementation(project(":feature:home:products_overview"))
-            implementation(project(":feature:home:categories"))
-            implementation(project(":feature:home:cart"))
-            implementation(project(":feature:home:cart:checkout"))
-            implementation(project(":feature:payment_completed"))
-            implementation(project(":data"))
-            implementation(project(":shared"))
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
         }
-        androidMain.dependencies {
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.koin.androidx.compose)
-            implementation(libs.androidx.lifecycle.viewmodel)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin.client)
         }
     }
 }
 
 android {
-    namespace = "com.sami.di"
+    namespace = "com.sami.categories"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

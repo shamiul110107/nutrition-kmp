@@ -1,4 +1,4 @@
-package com.nutrition.profile
+package com.nutrition.shared.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -22,9 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.nutrition.shared.component.dialog.CountryPickerDialog
 import com.nutrition.shared.domain.Country
-
+import com.nutrition.profile.AlertTextField
+import com.nutrition.profile.CustomTextField
+import com.nutrition.shared.component.dialog.CountryPickerDialog
 
 @Composable
 fun ProfileForm(
@@ -59,12 +58,11 @@ fun ProfileForm(
             }
         )
     }
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(vertical = 12.dp)
-            .verticalScroll(state = rememberScrollState())
-            .imePadding(),
+            .verticalScroll(state = rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         CustomTextField(
@@ -97,7 +95,7 @@ fun ProfileForm(
             placeholder = "Postal Code",
             error = postalCode == null || postalCode.toString().length !in 3..8,
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Companion.Number
+                keyboardType = KeyboardType.Number
             )
         )
         CustomTextField(
@@ -107,22 +105,22 @@ fun ProfileForm(
             error = address?.length !in 3..50
         )
         Row(
-            modifier = Modifier.Companion.fillMaxWidth(),
-            verticalAlignment = Alignment.Companion.CenterVertically
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             AlertTextField(
                 text = "+${country.dialCode}",
                 icon = country.flag,
                 onClick = { showCountryDialog = true }
             )
-            Spacer(modifier = Modifier.Companion.width(12.dp))
+            Spacer(modifier = Modifier.width(12.dp))
             CustomTextField(
                 value = phoneNumber ?: "",
                 onValueChange = onPhoneNumberChange,
                 placeholder = "Phone Number",
                 error = phoneNumber.toString().length !in 5..30,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Companion.Number
+                    keyboardType = KeyboardType.Number
                 )
             )
         }

@@ -46,6 +46,8 @@ import com.nutrisport.home.component.CustomDrawer
 import com.nutrisport.home.domain.CustomDrawerState
 import com.nutrisport.home.domain.isOpened
 import com.nutrisport.home.domain.opposite
+import com.nutrition.cart.CartScreen
+import com.nutrition.categories.presentation.CategoriesScreen
 import com.nutrition.shared.util.RequestState
 import com.nutrition.home.domain.BottomBarDestination
 import com.nutrition.products_overview.ProductsOverviewScreen
@@ -244,14 +246,14 @@ fun HomeGraphScreen(
                                     navigateToDetails = navigateToDetails
                                 )
                             }
-//                            composable<Screen.Cart> {
-//                                CartScreen()
-//                            }
-//                            composable<Screen.Categories> {
-//                                CategoriesScreen(
-//                                    navigateToCategorySearch = navigateToCategorySearch
-//                                )
-//                            }
+                            composable<Screen.Cart> {
+                                CartScreen()
+                            }
+                            composable<Screen.Categories> {
+                                CategoriesScreen(
+                                    navigateToCategorySearch = navigateToCategorySearch
+                                )
+                            }
                         }
                         Spacer(modifier = Modifier.height(12.dp))
                         Box(
