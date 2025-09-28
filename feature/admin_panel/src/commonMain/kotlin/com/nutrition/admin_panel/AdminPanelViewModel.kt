@@ -2,7 +2,7 @@ package com.nutrition.admin_panel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
 import com.nutrition.data.domain.AdminRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

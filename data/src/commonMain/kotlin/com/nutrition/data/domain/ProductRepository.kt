@@ -1,8 +1,8 @@
-package com.nutrisport.data.domain
+package com.nutrition.data.domain
 
-import com.nutrisport.shared.domain.Product
-import com.nutrisport.shared.domain.ProductCategory
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
+import com.nutrition.shared.domain.Product
+import com.nutrition.shared.domain.ProductCategory
 import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {

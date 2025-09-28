@@ -1,37 +1,21 @@
-package com.nutrition.home
+package com.nutrition.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nutrition.shared.util.RequestState
 import com.nutrition.data.domain.CustomerRepository
 import com.nutrition.data.domain.ProductRepository
-import com.nutrition.shared.util.threadSleep
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.IO
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class HomeGraphViewModel(
+class CartViewModel(
     private val customerRepository: CustomerRepository,
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
-    init {
-        println("Initializing....ViewModel")
-        threadSleep(2000)
-    }
-
-    val customer = customerRepository.readCustomerFlow()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = RequestState.Loading
-        )
+    private val customer = customerRepository.readCustomerFlow()
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private val products = customer
@@ -68,37 +52,33 @@ class HomeGraphViewModel(
         }
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val totalAmountFlow = cartItemsWithProducts
-        .flatMapLatest { data ->
-            if (data.isSuccess()) {
-                val items = data.getSuccessData()
-                val cartItems = items.map { it.first }
-                val products = items.map { it.second }.associateBy { it.id }
-
-                val totalPrice = cartItems.sumOf { cartItem ->
-                    val productPrice = products[cartItem.productId]?.price ?: 0.0
-                    productPrice * cartItem.quantity
-                }
-
-                flowOf(RequestState.Success(totalPrice))
-            } else if (data.isError()) flowOf(RequestState.Error(data.getErrorMessage()))
-            else flowOf(RequestState.Loading)
-        }
-
-    fun signOut(
+    fun updateCartItemQuantity(
+        id: String,
+        quantity: Int,
         onSuccess: () -> Unit,
         onError: (String) -> Unit,
     ) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                customerRepository.signOut()
-            }
-            if (result.isSuccess()) {
-                onSuccess()
-            } else if (result.isError()) {
-                onError(result.getErrorMessage())
-            }
+            customerRepository.updateCartItemQuantity(
+                id = id,
+                quantity = quantity,
+                onSuccess = onSuccess,
+                onError = onError
+            )
+        }
+    }
+
+    fun deleteCartItem(
+        id: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit,
+    ) {
+        viewModelScope.launch {
+            customerRepository.deleteCartItem(
+                id = id,
+                onSuccess = onSuccess,
+                onError = onError
+            )
         }
     }
 }

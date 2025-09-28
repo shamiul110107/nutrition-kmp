@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
 import com.nutrition.data.domain.CustomerRepository
 import com.nutrition.shared.domain.Country
 import com.nutrition.shared.domain.Customer

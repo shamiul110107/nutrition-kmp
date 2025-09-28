@@ -2,6 +2,7 @@ package com.nutrition.home
 
 import ContentWithMessageBar
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -23,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,7 +46,9 @@ import com.nutrisport.home.component.CustomDrawer
 import com.nutrisport.home.domain.CustomDrawerState
 import com.nutrisport.home.domain.isOpened
 import com.nutrisport.home.domain.opposite
+import com.nutrition.shared.util.RequestState
 import com.nutrition.home.domain.BottomBarDestination
+import com.nutrition.products_overview.ProductsOverviewScreen
 import com.nutrition.shared.Alpha
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.FontSize
@@ -60,6 +64,7 @@ import com.nutrition.shared.util.getScreenWidth
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
+import kotlin.toString
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,7 +75,7 @@ fun HomeGraphScreen(
     navigateToDetails: (String) -> Unit,
     navigateToCategorySearch: (String) -> Unit,
     navigateToCheckout: (String) -> Unit,
-    ) {
+) {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
     val selectedDestination by remember {
@@ -84,6 +89,7 @@ fun HomeGraphScreen(
             }
         }
     }
+
     val screenWidth = remember { getScreenWidth() }
     var drawerState by remember { mutableStateOf(CustomDrawerState.Closed) }
 
@@ -103,16 +109,20 @@ fun HomeGraphScreen(
     val animatedRadius by animateDpAsState(
         targetValue = if (drawerState.isOpened()) 20.dp else 0.dp
     )
+
     val viewModel = koinViewModel<HomeGraphViewModel>()
+    val customer by viewModel.customer.collectAsState()
+    val totalAmount by viewModel.totalAmountFlow.collectAsState(RequestState.Loading)
     val messageBarState = rememberMessageBarState()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(SurfaceLighter)
+            .background(animatedBackground)
             .systemBarsPadding()
     ) {
         CustomDrawer(
+            customer = customer,
             onProfileClick = navigateToProfile,
             onContactUsClick = {},
             onSignOutClick = {
@@ -121,8 +131,7 @@ fun HomeGraphScreen(
                     onError = { message -> messageBarState.addError(message) }
                 )
             },
-            onAdminPanelClick = navigateToAdminPanel,
-            customer = null
+            onAdminPanelClick = navigateToAdminPanel
         )
         Box(
             modifier = Modifier
@@ -151,6 +160,29 @@ fun HomeGraphScreen(
                                     fontSize = FontSize.LARGE,
                                     color = TextPrimary
                                 )
+                            }
+                        },
+                        actions = {
+                            AnimatedVisibility(
+                                visible = selectedDestination == BottomBarDestination.Cart
+                            ) {
+                                if (customer.isSuccess() && customer.getSuccessData().cart.isNotEmpty()) {
+                                    IconButton(onClick = {
+                                        if (totalAmount.isSuccess()) {
+                                            navigateToCheckout(
+                                                totalAmount.getSuccessData().toString()
+                                            )
+                                        } else if (totalAmount.isError()) {
+                                            messageBarState.addError("Error while calculating a total amount: ${totalAmount.getErrorMessage()}")
+                                        }
+                                    }) {
+                                        Icon(
+                                            painter = painterResource(Resources.Icon.RightArrow),
+                                            contentDescription = "Right icon",
+                                            tint = IconPrimary
+                                        )
+                                    }
+                                }
                             }
                         },
                         navigationIcon = {
@@ -201,35 +233,40 @@ fun HomeGraphScreen(
                     successContainerColor = SurfaceBrand,
                     successContentColor = TextPrimary
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxSize()
-                            .padding(
-                                top = padding.calculateTopPadding(),
-                                bottom = padding.calculateBottomPadding()
-                            )
-                    ) {
+                    Column(modifier = Modifier.fillMaxSize()) {
                         NavHost(
                             modifier = Modifier.weight(1f),
                             navController = navController,
                             startDestination = Screen.ProductsOverview
                         ) {
-                            composable<Screen.ProductsOverview> {}
-                            composable<Screen.Cart> {}
-                            composable<Screen.Categories> {}
+                            composable<Screen.ProductsOverview> {
+                                ProductsOverviewScreen(
+                                    navigateToDetails = navigateToDetails
+                                )
+                            }
+//                            composable<Screen.Cart> {
+//                                CartScreen()
+//                            }
+//                            composable<Screen.Categories> {
+//                                CategoriesScreen(
+//                                    navigateToCategorySearch = navigateToCategorySearch
+//                                )
+//                            }
                         }
-                        Spacer(modifier = Modifier.height(120.dp))
+                        Spacer(modifier = Modifier.height(12.dp))
                         Box(
                             modifier = Modifier
                                 .padding(all = 12.dp)
                         ) {
                             BottomBar(
+                                customer = customer,
                                 selected = selectedDestination,
                                 onSelect = { destination ->
                                     navController.navigate(destination.screen) {
                                         launchSingleTop = true
-                                        popUpTo(Screen.ProductsOverview) {
-                                            inclusive = true
+                                        popUpTo<Screen.ProductsOverview> {
                                             saveState = true
+                                            inclusive = false
                                         }
                                         restoreState = true
                                     }

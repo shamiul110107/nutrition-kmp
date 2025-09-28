@@ -1,5 +1,6 @@
 package com.nutrition.home.component
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -7,7 +8,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -16,15 +20,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.nutrition.shared.util.RequestState
 import com.nutrition.home.domain.BottomBarDestination
 import com.nutrition.shared.IconPrimary
 import com.nutrition.shared.IconSecondary
 import com.nutrition.shared.SurfaceLighter
+import com.nutrition.shared.domain.Customer
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun BottomBar(
     modifier: Modifier = Modifier,
+    customer: RequestState<Customer>,
     selected: BottomBarDestination,
     onSelect: (BottomBarDestination) -> Unit,
 ) {
@@ -51,8 +58,7 @@ fun BottomBar(
                     contentDescription = "Bottom Bar destination icon",
                     tint = animatedTint
                 )
-                /*
-                                if (destination == BottomBarDestination.Cart) {
+                if (destination == BottomBarDestination.Cart) {
                     AnimatedContent(
                         targetState = customer
                     ) { customerState ->
@@ -67,8 +73,6 @@ fun BottomBar(
                         }
                     }
                 }
-
-                 */
             }
         }
     }

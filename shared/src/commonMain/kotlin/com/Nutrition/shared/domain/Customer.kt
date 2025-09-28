@@ -12,7 +12,8 @@ data class Customer(
     val postalCode: Int? = null,
     val address: String? = null,
     val phoneNumber: PhoneNumber? = null,
-    var cart: List<CartItem> = emptyList()
+    var cart: List<CartItem> = emptyList(),
+    val isAdmin: Boolean = false
 )
 
 @Serializable

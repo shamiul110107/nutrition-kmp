@@ -5,9 +5,12 @@ import com.nutrition.admin_panel.AdminPanelViewModel
 import com.nutrition.auth.AuthViewModel
 import com.nutrition.data.AdminRepositoryImpl
 import com.nutrition.data.CustomerRepositoryImp
+import com.nutrition.data.ProductRepositoryImpl
 import com.nutrition.data.domain.AdminRepository
 import com.nutrition.data.domain.CustomerRepository
+import com.nutrition.data.domain.ProductRepository
 import com.nutrition.home.HomeGraphViewModel
+import com.nutrition.products_overview.ProductsOverviewViewModel
 import com.nutrition.profile.viewModel.ProfileViewModel
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -16,12 +19,14 @@ import org.koin.dsl.module
 
 val sharedModule = module {
     single<CustomerRepository> { CustomerRepositoryImp() }
+    single<ProductRepository> { ProductRepositoryImpl() }
 
     single<AdminRepository> { AdminRepositoryImpl() }
     viewModelOf(::AdminPanelViewModel)
 
     viewModelOf(::AuthViewModel)
     viewModelOf(::HomeGraphViewModel)
+    viewModelOf(::ProductsOverviewViewModel)
     viewModelOf(::ProfileViewModel)
     viewModelOf(::ManageProductViewModel)
 }

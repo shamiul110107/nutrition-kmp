@@ -42,6 +42,7 @@ kotlin {
 
             implementation(project(path = ":shared"))
             implementation(project(path = ":data"))
+            implementation(project(path = ":feature:home:products_overview"))
         }
         androidMain.dependencies {
             implementation(compose.components.uiToolingPreview)

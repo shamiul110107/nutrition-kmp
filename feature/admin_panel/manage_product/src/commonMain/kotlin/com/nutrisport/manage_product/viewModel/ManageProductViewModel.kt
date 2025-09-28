@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
 import com.nutrition.data.domain.AdminRepository
 import com.nutrition.shared.domain.Product
 import com.nutrition.shared.domain.ProductCategory

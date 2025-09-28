@@ -1,3 +1,3 @@
-package com.nutrisport.shared.util
+package com.nutrition.shared.util
 
 expect fun threadSleep(millis: Long)

@@ -69,8 +69,8 @@ import com.nutrition.shared.component.ErrorCard
 import com.nutrition.shared.component.LoadingCard
 import com.nutrition.shared.component.PrimaryButton
 import com.nutrition.shared.domain.ProductCategory
-import com.nutrisport.shared.util.DisplayResult
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.DisplayResult
+import com.nutrition.shared.util.RequestState
 import com.nutrition.profile.AlertTextField
 import com.nutrition.profile.CustomTextField
 import com.nutrition.shared.component.dialog.CategoriesDialog

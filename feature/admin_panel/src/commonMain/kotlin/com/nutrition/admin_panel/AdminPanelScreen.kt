@@ -26,7 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nutrisport.shared.util.DisplayResult
+import com.nutrition.shared.util.DisplayResult
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.BorderIdle
 import com.nutrition.shared.ButtonPrimary

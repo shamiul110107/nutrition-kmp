@@ -1,10 +1,9 @@
-package com.nutrisport.data
-
-import com.nutrisport.data.domain.ProductRepository
-import com.nutrisport.shared.domain.Product
-import com.nutrisport.shared.domain.ProductCategory
-import com.nutrisport.shared.util.RequestState
-import com.nutrisport.shared.util.threadSleep
+package com.nutrition.data
+import com.nutrition.shared.util.RequestState
+import com.nutrition.data.domain.ProductRepository
+import com.nutrition.shared.domain.Product
+import com.nutrition.shared.domain.ProductCategory
+import com.nutrition.shared.util.threadSleep
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore

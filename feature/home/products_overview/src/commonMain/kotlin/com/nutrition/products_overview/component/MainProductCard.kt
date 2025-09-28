@@ -1,4 +1,4 @@
-package com.nutrisport.products_overview.component
+package com.nutrition.products_overview.component
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
@@ -41,15 +41,15 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.nutrisport.shared.Alpha
-import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.IconWhite
-import com.nutrisport.shared.Resources
-import com.nutrisport.shared.RobotoCondensedFont
-import com.nutrisport.shared.TextBrand
-import com.nutrisport.shared.TextWhite
-import com.nutrisport.shared.domain.Product
-import com.nutrisport.shared.domain.ProductCategory
+import com.nutrition.shared.Alpha
+import com.nutrition.shared.FontSize
+import com.nutrition.shared.IconWhite
+import com.nutrition.shared.Resources
+import com.nutrition.shared.RobotoCondensedFont
+import com.nutrition.shared.TextBrand
+import com.nutrition.shared.TextWhite
+import com.nutrition.shared.domain.Product
+import com.nutrition.shared.domain.ProductCategory
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

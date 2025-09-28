@@ -1,4 +1,4 @@
-package com.nutrisport.products_overview
+package com.nutrition.products_overview
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateFloatAsState
@@ -27,16 +27,17 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.nutrisport.products_overview.component.MainProductCard
-import com.nutrisport.shared.Alpha
-import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.Resources
-import com.nutrisport.shared.TextPrimary
-import com.nutrisport.shared.component.InfoCard
-import com.nutrisport.shared.component.LoadingCard
-import com.nutrisport.shared.component.ProductCard
-import com.nutrisport.shared.util.DisplayResult
+import com.nutrition.products_overview.component.MainProductCard
+import com.nutrition.shared.util.DisplayResult
+import com.nutrition.shared.Alpha
+import com.nutrition.shared.FontSize
+import com.nutrition.shared.Resources
+import com.nutrition.shared.TextPrimary
+import com.nutrition.shared.component.InfoCard
+import com.nutrition.shared.component.LoadingCard
+import com.nutrition.shared.component.ProductCard
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.math.abs
 
 @Composable
 fun ProductsOverviewScreen(
@@ -52,7 +53,7 @@ fun ProductsOverviewScreen(
             val viewportCenter = layoutInfo.viewportStartOffset + layoutInfo.viewportEndOffset / 2
             layoutInfo.visibleItemsInfo.minByOrNull { item ->
                 val itemCenter = item.offset + item.size / 2
-                kotlin.math.abs(itemCenter - viewportCenter)
+                abs(itemCenter - viewportCenter)
             }?.index
         }
     }
@@ -113,7 +114,7 @@ fun ProductsOverviewScreen(
                         ) {
                             items(
                                 items = products
-                                    .filter { it.isDiscounted == true }
+                                    .filter { it.isDiscounted }
                                     .sortedBy { it.createdAt }
                                     .take(3),
                                 key = { it.id }

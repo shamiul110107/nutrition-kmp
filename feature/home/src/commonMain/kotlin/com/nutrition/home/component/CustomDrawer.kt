@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.nutrition.home.domain.DrawerItem
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
 import com.nutrition.shared.BebasNeueFont
 import com.nutrition.shared.FontSize
 import com.nutrition.shared.TextPrimary

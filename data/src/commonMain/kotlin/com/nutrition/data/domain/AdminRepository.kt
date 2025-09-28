@@ -1,6 +1,6 @@
 package com.nutrition.data.domain
 
-import com.nutrisport.shared.util.RequestState
+import com.nutrition.shared.util.RequestState
 import com.nutrition.shared.domain.Product
 import dev.gitlive.firebase.storage.File
 import kotlinx.coroutines.flow.Flow
