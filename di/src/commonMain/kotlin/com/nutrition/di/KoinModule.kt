@@ -23,8 +23,11 @@ import com.nutrition.profile.viewModel.ProfileViewModel
 import com.nutrition.shared.util.IntentHandler
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
+
+expect val targetModule: Module
 
 val sharedModule = module {
     single<CustomerRepository> { CustomerRepositoryImpl() }
@@ -50,6 +53,6 @@ fun initializeKoin(
 ) {
     startKoin {
         config?.invoke(this)
-        modules(sharedModule)
+        modules(sharedModule, targetModule)
     }
 }

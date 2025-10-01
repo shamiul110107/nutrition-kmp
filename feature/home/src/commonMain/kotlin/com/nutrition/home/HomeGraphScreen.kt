@@ -42,7 +42,7 @@ import com.nutrition.shared.Surface
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.nutrisport.home.component.CustomDrawer
+import com.nutrition.home.component.CustomDrawer
 import com.nutrisport.home.domain.CustomDrawerState
 import com.nutrisport.home.domain.isOpened
 import com.nutrisport.home.domain.opposite

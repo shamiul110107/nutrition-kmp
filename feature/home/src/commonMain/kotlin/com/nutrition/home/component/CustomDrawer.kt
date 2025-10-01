@@ -1,6 +1,5 @@
-package com.nutrisport.home.component
+package com.nutrition.home.component
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -66,14 +65,16 @@ fun CustomDrawer(
             Spacer(modifier = Modifier.height(12.dp))
         }
         Spacer(modifier = Modifier.weight(1f))
-        AnimatedContent(targetState = customer) { customerState ->
-//            if (customerState.isSuccess() && customerState.getSuccessData().isAdmin) {
-//                DrawerItemCard(
-//                    drawerItem = DrawerItem.Admin,
-//                    onClick = onAdminPanelClick
-//                )
-//            }
-        }
+      //  AnimatedContent(targetState = customer) { customerState ->
+            println("OUTUUUUTUTUTUTUTUTUT")
+           // println("============= ${customerState?.getSuccessData()?.isAdmin}")
+          //  if (customerState?.isSuccess() == true && customerState.getSuccessData().isAdmin) {
+                DrawerItemCard(
+                    drawerItem = DrawerItem.Admin,
+                    onClick = onAdminPanelClick
+                )
+         //   }
+     //   }
         Spacer(modifier = Modifier.height(24.dp))
     }
 }
